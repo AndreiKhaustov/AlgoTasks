@@ -1,13 +1,15 @@
 package org.example.algorithmes;
 
-public class MergeSort {
+public class MergeSort extends Fibonacci{
+    public int f = MergeSort.a;
     // O(n log n)
     public static void main(String[] args) {
         int[] arr = {8,1,3,5,9,12,33, -1000};
      mergeSort(arr);
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+//            System.out.print(arr[i] + " ");
         }
+        System.out.println(new MergeSort().f);
         }
    public static void mergeSort(int[] arr) {
         int currentSize = arr.length;

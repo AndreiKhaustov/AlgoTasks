@@ -3,6 +3,7 @@ package org.example.algorithmes;
 import java.util.Arrays;
 
 public class Fibonacci {
+    public static int a = 44;
     public static void main(String[] args) {
         int n = 10;
         long[] mem = new long[n+1];// for saving the values
