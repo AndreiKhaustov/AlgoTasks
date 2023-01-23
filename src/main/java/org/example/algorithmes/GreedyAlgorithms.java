@@ -9,18 +9,20 @@ public class GreedyAlgorithms {
     public static void main(String[] args) {
         int[]arr = {1,3,4,9,5,8};
         System.out.println(getMaxNumberFromDigits(arr));
+        System.out.println("_______");
     }
     public static String getMaxNumberFromDigits(int[] arr) {
         return String.join("",Arrays.stream(arr)
                 .boxed()
                 .sorted(Collections.reverseOrder())
                 .map(String::valueOf).toArray(String[]::new));
-        //N log N
+//        N log N
 //        Arrays.sort(arr);
 //        StringBuilder d = new StringBuilder();
 //        for (int i = arr.length-1; i >= 0; i--) {
 //            d.append(arr[i]);
 //        }
 //        return d.toString();
+
     }
 }
