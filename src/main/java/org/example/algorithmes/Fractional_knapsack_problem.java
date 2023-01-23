@@ -21,11 +21,11 @@ public class Fractional_knapsack_problem {
          */
         System.out.println(Arrays.toString(items));
         int W = 7;
-        int weightSoFar = 0;
+        double weightSoFar = 0;
        double valueSoFar = 0;
        int currentIndex = 0;
        while(currentIndex<items.length&&weightSoFar!=W){
-          int freeSpace = W-weightSoFar;
+          double freeSpace = W-weightSoFar;
           if(freeSpace-items[currentIndex].getWeight()>0) {
               valueSoFar += items[currentIndex].getWeight() * items[currentIndex].valuePerUnit();
               weightSoFar += items[currentIndex].getWeight();

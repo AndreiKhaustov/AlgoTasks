@@ -3,29 +3,68 @@ package org.example.algorithmes;
 import java.util.Arrays;
 import java.util.Comparator;
 
+
 public class StudyClass {
+
+
     public static void main(String[] args) {
-        System.out.println(binarySearch(new int[]{1,4,5,7,9,1222}, 1222));
+        final OneItem item = new OneItem(2, 14);
+        final OneItem item1 = new OneItem(3, 18);
+        final OneItem item2 = new OneItem(4, 20);
+        OneItem[] items = {item, item1, item2};
+        double size = 7.0;
+        double weightSoFar = 0.0;
+        double valueSoFar=0.0;
+        int index = 0;
+        Arrays.sort(items, Comparator.comparingDouble(OneItem::getValuePerWeight).reversed());
 
-    }
-
-    public static int binarySearch(int[] arr, int a) {
-        int high = arr.length-1;
-        int low = 0;
-        while(low<=high) {
-            int mid = low + (high-low)/2;
-            if(a>arr[mid]) {
-                low = mid+1;
-            }
-            else if(a<arr[mid]){
-                high = mid-1;
+        while (weightSoFar < size && index<items.length) {
+            if(weightSoFar+items[index].getWeight()<=size) {
+                valueSoFar += items[index].getValue();
+                weightSoFar += items[index].getWeight();
             }
             else {
-                return mid;
+                valueSoFar += (size-weightSoFar)*items[index].getValuePerWeight();
+                weightSoFar = size;
             }
+          index++;
         }
-        return -1;
+
+        System.out.println(valueSoFar);
+        System.out.println(weightSoFar);
+
+    }
+}
+
+    class OneItem {
+        private int weight;
+        private int value;
+
+        public OneItem(int weight, int value) {
+            this.weight = weight;
+            this.value = value;
+        }
+
+        public double getValuePerWeight() {
+            return value / (double) weight;
+        }
+
+        public int getWeight() {
+            return weight;
+        }
+
+        public void setWeight(int weight) {
+            this.weight = weight;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
     }
 
-}
+
 
